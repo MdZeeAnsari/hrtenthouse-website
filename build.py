@@ -28,6 +28,8 @@ CNAME_DOMAIN = ""
 # Free key from https://web3forms.com (sign up with the shop email).
 # Until it is set, the enquiry form sends the enquiry on WhatsApp instead.
 WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY"
+# Google Search Console "HTML tag" verification code (only the content="..." part)
+GOOGLE_SITE_VERIFICATION = "v8gOomj9TuxrqPu7_e7NrRgDYlEJWcbPzF5r-07Grlw"
 
 BIZ = {
     "name": "H.R. Tent House & Caterers",
@@ -372,6 +374,7 @@ def head(p, page):
     ld = "\n".join(f'<script type="application/ld+json">{json.dumps(s, ensure_ascii=False)}</script>' for s in schemas)
     intro_flag = "1" if page.get("intro") else "0"
     robots = '<meta name="robots" content="noindex">' if page.get("noindex") else '<meta name="robots" content="index, follow, max-image-preview:large">'
+    gsv = f'<meta name="google-site-verification" content="{E(GOOGLE_SITE_VERIFICATION)}">\n' if GOOGLE_SITE_VERIFICATION else ""
     return f"""<!doctype html>
 <html lang="en-IN">
 <head>
@@ -381,7 +384,7 @@ def head(p, page):
 <meta name="description" content="{E(page['desc'])}">
 {robots}
 <link rel="canonical" href="{canon}">
-<meta name="theme-color" content="#141416">
+{gsv}<meta name="theme-color" content="#141416">
 <meta name="format-detection" content="telephone=no">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{E(BIZ['name'])}">
