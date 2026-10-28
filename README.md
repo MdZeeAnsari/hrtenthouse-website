@@ -77,3 +77,4 @@ To also receive enquiries by email:
 | `IMAGES` / `VIDEOS` | Photos (alt text + gallery filters) and videos |
 
 Testimonials section is ready to add once there are 3+ real Google reviews (see the comment in `home()`).
+Live site: https://mdzeeansari.github.io/hrtenthouse-website/
